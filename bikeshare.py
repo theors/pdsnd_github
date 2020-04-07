@@ -292,8 +292,10 @@ def main():
             month_hour_stats(df)
         else:
             time_stats(df)
+
         """ Due to the fact the Washington.csv file is missing data on gender and birth year, I define a new function was_user_stats() which
         estimates user statistics if the city selected is that of Washington."""
+
         if city == 'washington':
             station_stats(df)
             trip_duration_stats(df)
@@ -306,6 +308,7 @@ def main():
 
         """Prompting the user to choose whether or not they want to see individual trip data
         and providing a sample of 5 rows of raw input each time while validating that the user input is yes or no."""
+
         while True:
             try:
                 individual_trip_data = input('\nWould you like to view individual trip data? Type \'yes\' or \'no\': \n').lower()
