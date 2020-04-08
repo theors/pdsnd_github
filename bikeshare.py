@@ -119,7 +119,7 @@ def time_stats(df):
     # display the most common month
     popular_month = df['month'].mode()[0]
     months = {1: 'January', 2: 'February', 3: 'March', 4: 'April', 5: 'May', 6: 'June'}
-    for i in range(len(months)+1):
+    for i in months:
         if popular_month == i:
             print('\nThe most popular month is:\n', months[i])
 
