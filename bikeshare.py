@@ -321,9 +321,19 @@ def main():
                 continue
 
 
-        restart = input('\nWould you like to restart? Enter yes or no.\n')
-        if restart.lower() != 'yes':
-            break
+        while True:
+            try:
+                restart = input('\nWould you like to restart? Enter yes or no.\n')
+                if restart.lower() not in ('yes', 'no'):
+                    print('This is not a valid answer. Please answer with either \'yes\' or \'no\'')
+                elif restart.lower() == 'no':
+                    break
+                else:
+                    main()
+            except (ValueError, KeyboardInterrupt):
+                print('\nNo input taken.')
+                continue
+        break
 
 
 if __name__ == "__main__":
