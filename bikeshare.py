@@ -1,6 +1,5 @@
 import time
 import pandas as pd
-import numpy as np
 
 CITY_DATA = { 'chicago': 'chicago.csv',
               'new york city': 'new_york_city.csv',
@@ -120,7 +119,7 @@ def time_stats(df):
     # display the most common month
     popular_month = df['month'].mode()[0]
     months = {1: 'January', 2: 'February', 3: 'March', 4: 'April', 5: 'May', 6: 'June'}
-    for i in range(len(months)+1):
+    for i in months:
         if popular_month == i:
             print('\nThe most popular month is:\n', months[i])
 
@@ -325,9 +324,19 @@ def main():
                 continue
 
 
-        restart = input('\nWould you like to restart? Enter yes or no.\n')
-        if restart.lower() != 'yes':
-            break
+        while True:
+            try:
+                restart = input('\nWould you like to restart? Enter yes or no.\n')
+                if restart.lower() not in ('yes', 'no'):
+                    print('This is not a valid answer. Please answer with either \'yes\' or \'no\'')
+                elif restart.lower() == 'no':
+                    break
+                else:
+                    main()
+            except (ValueError, KeyboardInterrupt):
+                print('\nNo input taken.')
+                continue
+        break
 
 
 if __name__ == "__main__":
